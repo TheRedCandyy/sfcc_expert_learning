@@ -3,11 +3,11 @@ var path = require('path');
     var sgmfScripts = require('sgmf-scripts');
 
     module.exports = [{
-        mode: 'production',
+        mode: 'none',
         name: 'js',
         entry: sgmfScripts.createJsPath(),
         output: {
-            path: path.resolve('./cartridges/sfcc_learning_app/cartridge/static'),
+            path: path.resolve('./cartridges/sfra_training/cartridge/static'),
             filename: '[name].js'
         }
     }, {
@@ -15,7 +15,7 @@ var path = require('path');
         name: 'scss',
         entry: sgmfScripts.createScssPath(),
         output: {
-            path: path.resolve('./cartridges/sfcc_learning_app/cartridge/static'),
+            path: path.resolve('./cartridges/sfra_training/cartridge/static'),
             filename: '[name].css'
         },
         module: {

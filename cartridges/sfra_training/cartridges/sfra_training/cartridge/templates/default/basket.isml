@@ -1,0 +1,29 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/cart.css');
+</isscript>
+<isif condition="${pdict.items.length === 0}">
+    <iscomment>
+        Prints message stating no basket exists
+    </iscomment>
+    <p>No basket exists</p>
+<iselse/>
+    <iscomment>
+        Perform the next step
+    </iscomment>
+    <h2>${Resource.msg('title.cart','cart',null)}</h2>
+    <isloop items="${pdict.items}" var="lineItem" status="loopstate">
+        <isif condition="${lineItem.options.length === 0}">
+            ${Resource.msg('product.name','cart',null)} <isinclude template="cart/productCard/cartProductCardHeader" />
+            ${Resource.msg('product.price','cart',null)} <isinclude template="cart/productCard/cartProductCardProductPrice" />
+            ${Resource.msg('product.availability','cart',null)} <isinclude template="cart/productCard/cartProductCardAvailability" />
+        <iselse/>
+            ${Resource.msg('product.name','cart',null)} <isinclude template="cart/productCard/cartProductCardHeader" />
+            ${Resource.msg('product.price','cart',null)} <isinclude template="cart/productCard/cartProductCardProductPrice" />
+            ${Resource.msg('product.availability','cart',null)} <isinclude template="cart/productCard/cartProductCardAvailability" />
+            <isloop items="${lineItem.options}" var="option" status="loopstatus">
+                <p style="margin-left:25px">Count ${loopstate.count}  Index ${loopstate.index} ${option.displayName}<br/></p>
+            </isloop>
+        </isif>
+    </isloop>
+</isif>
