@@ -1,5 +1,7 @@
 ## This repo holds my code for the SFCC Expert Learning Ticket
 
+The cartridge where I am doing these implementations is called `sfcc_learning_path`.
+
 ---
 ### Create a Wishlist
 ##### As a registered and logged in customer
