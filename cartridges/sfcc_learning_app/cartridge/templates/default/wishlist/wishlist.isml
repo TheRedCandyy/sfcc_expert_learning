@@ -1,0 +1,13 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets');
+    </isscript>
+    <h1>WISHLIST</h1>
+    <isloop items="${pdict.wishlist.items}" var="item">
+        <div class="container">
+            <img src="${item.imageObj.small[0].absURL}" alt="">
+            <p>${item.name}</p>
+            <b>Price: ${item.priceObj.sales.formatted}</b>
+        </div>
+    </isloop>
+</isdecorate>

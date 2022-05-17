@@ -1,0 +1,19 @@
+<div class="row cart-and-ipay">
+    <div class="col-sm-12">
+        <button
+            class="btn btn-primary add-to-wishlist"
+            data-pid="${product.id}"
+            data-href="${URLUtils.url('Wishlist-AddProduct')}"
+            data-option="${JSON.stringify(item.selectedOptions)}"
+            ${!product.available ? "disabled" : ""}
+            ${!pdict.loggedIn ? "disabled" : ""}>
+            <i class="fa fa-heart"></i>
+            ${Resource.msg('button.addtowishlist', 'product', null)}
+        </button>
+        <isif condition="${!pdict.loggedIn}">
+            <p class="wishlist-text">${Resource.msg('wishlist.notLoggedIn', 'wishlist', null)}</p>
+        <iselse/>
+            <p class="wishlist-text"></p>
+        </isif>
+    </div>
+</div>
