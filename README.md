@@ -11,15 +11,15 @@
 - [x] Remove  the item from my wishlist
     - [x] Remove from wishlist on the product details page
     - [x] Only show this button when the product **is** in the wishlist
-- [ ] Display an understandable message to inform the user that the item is in the wishlist
-    - [ ] When the product is **not** on the wishlist, display a message that invites the user to add it
-    - [ ] When the product **is** on the wishlist, display a message that invites the user to remove it
+- [x] Display an understandable message to inform the user that the item is in the wishlist
+    - [x] When the product is **not** on the wishlist, display a message that invites the user to add it
+    - [x] When the product **is** on the wishlist, display a message that invites the user to remove it
 - [x] Separate page that show the user his products in the wishlist, this page exists in the My Account area
     - [x] From my account I am able to navigate to my wishlist
     - [x] Display my wishlist items
     - [x] Do not show the wishlist if logged out
-- [ ] Inside the wishlist page there must be an option to remove the items
-    - [ ] When the there are no products the wishlist shows as empty
+- [x] Inside the wishlist page there must be an option to remove the items
+    - [x] When the there are no products the wishlist shows as empty
 - [ ] Add products from wishlist to cart
     - [ ] From the wishlist, each product has an option to add it to the cart
     - [ ] Items remain on the wishlist when added to the cart
