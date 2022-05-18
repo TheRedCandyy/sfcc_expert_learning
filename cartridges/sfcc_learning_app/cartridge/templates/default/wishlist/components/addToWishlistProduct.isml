@@ -1,12 +1,24 @@
 <div class="row cart-and-ipay">
     <div class="col-sm-12">
         <button
+            class="btn btn-primary remove-from-wishlist"
+            data-pid="${product.id}"
+            data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
+            data-option="${JSON.stringify(item.selectedOptions)}"
+            ${!product.available ? "disabled" : ""}
+            ${!pdict.loggedIn ? "disabled" : ""}
+            ${!pdict.inWishlist ? "style='display:none'" : ""}>
+            <i class="fa fa-heart"></i>
+            ${Resource.msg('button.removefromwishlist', 'product', null)}
+        </button>
+        <button
             class="btn btn-primary add-to-wishlist"
             data-pid="${product.id}"
             data-href="${URLUtils.url('Wishlist-AddProduct')}"
             data-option="${JSON.stringify(item.selectedOptions)}"
             ${!product.available ? "disabled" : ""}
-            ${!pdict.loggedIn ? "disabled" : ""}>
+            ${!pdict.loggedIn ? "disabled" : ""}
+            ${pdict.inWishlist ? "style='display:none'" : ""}>
             <i class="fa fa-heart"></i>
             ${Resource.msg('button.addtowishlist', 'product', null)}
         </button>

@@ -55,17 +55,49 @@ server.post('AddProduct', function (req, res, next) {
         Resource.msg('wishlist.addtowishlist.failure.msg', 'wishlist', null);
 
     var success = productListHelper.addItem(list, pid, config);
+
     if (success) {
         res.json({
             success: true,
             pid: pid,
+            button: 'remove-from-wishlist',
             msg: Resource.msg('wishlist.addtowishlist.success.msg', 'wishlist', null)
         });
     } else {
         res.json({
             error: true,
             pid: pid,
-            msg: errMsg
+            msg: Resource.msg('wishlist.addtowishlist.failure.msg', 'wishlist', null)
+        });
+    }
+
+    next();
+});
+
+server.post('RemoveProduct', function (req, res, next) {
+    var optionId = req.form.optionId || null;
+    var optionVal = req.form.optionVal || null;
+
+    var config = {
+        qty: 1,
+        optionId: optionId,
+        optionValue: optionVal,
+        req: req,
+        type: 10
+    };
+    try {
+        var list = productListHelper.removeItem(req.currentCustomer.raw, req.form.pid, config);
+        var listIsEmpty = list.prodList.items.empty;
+
+        res.json({
+            success: true,
+            listIsEmpty: listIsEmpty,
+            msg: Resource.msg('wishlist.removefromwishlist.success.msg', 'wishlist', null)
+        });
+    } catch (e) {
+        res.json({
+            error: true,
+            msg: Resource.msg('wishlist.removefromwishlist.failure.msg', 'wishlist', null)
         });
     }
 
