@@ -2,8 +2,9 @@
     <isscript>
         var assets = require('*/cartridge/scripts/assets');
         assets.addJs('/js/productDetail.js');
-        assets.addJs('/js/wishlist.js')
+        assets.addJs('/js/wishlist.js');
         assets.addCss('/css/product/detail.css');
+        assets.addCss('/css/wishlist.css');
     </isscript>
     <div class="container">
         <h1>WISHLIST</h1>
@@ -11,7 +12,7 @@
         <isif condition="${pdict.wishlist.items.length > 0}">
             <isloop items="${pdict.wishlist.items}" var="item" status="loopstatus">
                 <div class="card flex-row border-0">
-                    <a href="${URLUtils.url('Product-Show', 'pid', item.pid).relative().toString()}"><img src="${item.imageObj.small[0].absURL}" class="card-img-top w-auto rounded" alt="Image of product"></a>
+                    <a href="${URLUtils.url('Product-Show', 'pid', item.pid).relative().toString()}"><img src="${item.imageObj.small[0].absURL}" class="card-img-top w-auto rounded wishlist-image" alt="Image of product"></a>
                     <div class="card-body">
                         <h5 class="card-title">${item.name}</h5>
                         <p class="card-text">${item.priceObj.sales.formatted}</p>

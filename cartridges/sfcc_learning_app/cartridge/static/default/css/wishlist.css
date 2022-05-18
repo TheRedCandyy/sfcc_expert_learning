@@ -1,0 +1,4 @@
+.wishlist-image {
+  transition: all .3s ease-in-out; }
+  .wishlist-image:hover {
+    transform: scale(1.1); }
