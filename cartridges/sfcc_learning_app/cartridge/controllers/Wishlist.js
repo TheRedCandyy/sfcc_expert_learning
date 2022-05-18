@@ -91,12 +91,14 @@ server.post('RemoveProduct', function (req, res, next) {
 
         res.json({
             success: true,
+            pid: req.form.pid,
             listIsEmpty: listIsEmpty,
             msg: Resource.msg('wishlist.removefromwishlist.success.msg', 'wishlist', null)
         });
     } catch (e) {
         res.json({
             error: true,
+            pid: req.form.pid,
             msg: Resource.msg('wishlist.removefromwishlist.failure.msg', 'wishlist', null)
         });
     }

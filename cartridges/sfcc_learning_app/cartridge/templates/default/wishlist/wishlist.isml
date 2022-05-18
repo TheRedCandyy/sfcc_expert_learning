@@ -1,17 +1,36 @@
 <isdecorate template="common/layout/page">
     <isscript>
         var assets = require('*/cartridge/scripts/assets');
+        assets.addJs('/js/productDetail.js');
+        assets.addJs('/js/wishlist.js')
+        assets.addCss('/css/product/detail.css');
     </isscript>
-    <h1>WISHLIST</h1>
-    <isif condition="${pdict.wishlist.items}">
-        <isloop items="${pdict.wishlist.items}" var="item">
-            <div class="container">
-                <img src="${item.imageObj.small[0].absURL}" alt="">
-                <p>${item.name}</p>
-                <b>Price: ${item.priceObj.sales.formatted}</b>
-            </div>
-        </isloop>
-    <iselse/>
-        <h2>Your wishlist is empty</h2>
-    </isif>
+    <div class="container">
+        <h1>WISHLIST</h1>
+        <br>
+        <isif condition="${pdict.wishlist.items.length > 0}">
+            <isloop items="${pdict.wishlist.items}" var="item" status="loopstatus">
+                <div class="card flex-row border-0">
+                    <img src="${item.imageObj.small[0].absURL}" class="card-img-top w-auto rounded" alt="Image of product">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.name}</h5>
+                        <p class="card-text">${item.priceObj.sales.formatted}</p>
+                    </div>
+                    <button
+                        class="btn btn-primary remove-from-wishlist wishlist-page"
+                        data-pid="${item.pid}"
+                        data-option="${JSON.stringify(item.selectedOptions)}"
+                        data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
+                        style="height:40px">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <isif condition="${!loopstatus.last}">
+                    <hr>
+                </isif>
+            </isloop>
+        <iselse/>
+            <h2>${Resource.msg('wishlist.emptywishlist', 'wishlist', null)}</h2>
+        </isif>
+    </div>
 </isdecorate>
