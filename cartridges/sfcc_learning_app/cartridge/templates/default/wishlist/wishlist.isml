@@ -23,7 +23,7 @@
                         data-option="${JSON.stringify(item.selectedOptions)}"
                         data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
                         style="height:40px; margin-right:10px">
-                        <i class="fa fa-times"></i>
+                        <i class="fa fa-shopping-cart"></i>
                     </button>
                     <button
                         class="btn btn-primary remove-from-wishlist wishlist-page"
@@ -31,11 +31,13 @@
                         data-option="${JSON.stringify(item.selectedOptions)}"
                         data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
                         style="height:40px">
-                        <i class="fa fa-shopping-cart"></i>
+                        <i class="fa fa-times"></i>
                     </button>
                 </div>
                 <isif condition="${!loopstatus.last}">
                     <hr>
+                <iselse>
+                    <br>
                 </isif>
             </isloop>
         <iselse/>
