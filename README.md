@@ -8,9 +8,9 @@
     - [x] Items are saved using the wishlist link
 - [x] No permission to add product to wishlist if it already exists
     - [x] Display an error message
-- [ ] Remove  the item from my wishlist
-    - [ ] Remove from wishlist on the product details page
-    - [ ] Only show this button when the product **is** in the wishlist
+- [x] Remove  the item from my wishlist
+    - [x] Remove from wishlist on the product details page
+    - [x] Only show this button when the product **is** in the wishlist
 - [ ] Display an understandable message to inform the user that the item is in the wishlist
     - [ ] When the product is **not** on the wishlist, display a message that invites the user to add it
     - [ ] When the product **is** on the wishlist, display a message that invites the user to remove it
