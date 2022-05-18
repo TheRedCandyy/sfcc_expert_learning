@@ -11,7 +11,7 @@
         <isif condition="${pdict.wishlist.items.length > 0}">
             <isloop items="${pdict.wishlist.items}" var="item" status="loopstatus">
                 <div class="card flex-row border-0">
-                    <img src="${item.imageObj.small[0].absURL}" class="card-img-top w-auto rounded" alt="Image of product">
+                    <a href="${URLUtils.url('Product-Show', 'pid', item.pid).relative().toString()}"><img src="${item.imageObj.small[0].absURL}" class="card-img-top w-auto rounded" alt="Image of product"></a>
                     <div class="card-body">
                         <h5 class="card-title">${item.name}</h5>
                         <p class="card-text">${item.priceObj.sales.formatted}</p>
@@ -21,8 +21,16 @@
                         data-pid="${item.pid}"
                         data-option="${JSON.stringify(item.selectedOptions)}"
                         data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
-                        style="height:40px">
+                        style="height:40px; margin-right:10px">
                         <i class="fa fa-times"></i>
+                    </button>
+                    <button
+                        class="btn btn-primary remove-from-wishlist wishlist-page"
+                        data-pid="${item.pid}"
+                        data-option="${JSON.stringify(item.selectedOptions)}"
+                        data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
+                        style="height:40px">
+                        <i class="fa fa-shopping-cart"></i>
                     </button>
                 </div>
                 <isif condition="${!loopstatus.last}">
