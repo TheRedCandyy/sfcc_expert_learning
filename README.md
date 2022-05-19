@@ -20,9 +20,9 @@
     - [x] Do not show the wishlist if logged out
 - [x] Inside the wishlist page there must be an option to remove the items
     - [x] When the there are no products the wishlist shows as empty
-- [ ] Add products from wishlist to cart
-    - [ ] From the wishlist, each product has an option to add it to the cart
-    - [ ] Items remain on the wishlist when added to the cart
-    - [ ] Items that are added to the cart from the wishlist have their quantity updated appropriately
+- [x] Add products from wishlist to cart
+    - [x] From the wishlist, each product has an option to add it to the cart
+    - [x] Items remain on the wishlist when added to the cart
+    - [x] Items that are added to the cart from the wishlist have their quantity updated appropriately
 ##### As a non-logged in customer
 - [x] Displays the wishlist action disabled and a message that says the user needs to be logged in to do this.
