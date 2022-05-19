@@ -103,7 +103,7 @@ module.exports = {
         });
     },
     addToCartFromWishlist: function () {
-        $(document).on('click', 'button.add-to-cart, button.wishlist-page', function () {
+        $(document).on('click', 'button.add-to-cart.wishlist-page', function () {
             var pid;
             var addToCartUrl;
             var pidsQty;

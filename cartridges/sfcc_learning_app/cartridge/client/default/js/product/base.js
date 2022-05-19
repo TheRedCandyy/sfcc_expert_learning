@@ -620,7 +620,7 @@ module.exports = {
     },
 
     addToCart: function () {
-        $(document).on('click', 'button.add-to-cart, button.add-to-cart-global, button.add-to-wishlist', function () {
+        $(document).on('click', 'button.add-to-cart, button.add-to-cart-global', function () {
             var addToCartUrl;
             var pid;
             var pidsObj;
