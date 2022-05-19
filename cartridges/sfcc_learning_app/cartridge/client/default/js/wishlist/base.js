@@ -1,5 +1,22 @@
 'use strict';
 
+$('#successModal').on('hide.bs.modal', function (e) {
+    window.location.reload();
+})
+
+ function getPidValueWishlist($el) {
+    var pid;
+
+    if ($('#quickViewModal').hasClass('show') && !$('.product-set').length) {
+        pid = $($el).closest('.modal-content').find('.product-quickview').data('pid');
+    } else if ($('.product-set-detail').length || $('.product-set').length) {
+        pid = $($el).closest('.product-detail').find('.product-id').text();
+    } else {
+        pid = $('.product-detail:not(".bundle-item")').data('pid');
+    }
+    return pid;
+}
+
 function displayMessage(data, button) {
     if(data.success){
         $('.wishlist-text').addClass('text-success');
@@ -32,7 +49,7 @@ module.exports = {
             e.preventDefault();
             var button = $(this);
             var url = button.attr('data-href');
-            var pid = button.attr('data-pid');
+            var pid = getPidValueWishlist($(this));
             var optionId = button.closest('.product-detail').find('.select-size').attr('id');
             var optionVal = button.closest('.product-detail').find('.select-size option:selected').attr('data-attr-value');
 
@@ -83,6 +100,43 @@ module.exports = {
                     displayMessage(err, button);
                 }
             });
+        });
+    },
+    addToCartFromWishlist: function () {
+        $(document).on('click', 'button.add-to-cart, button.wishlist-page', function () {
+            var pid;
+            var addToCartUrl;
+            var pidsQty;
+
+            $('body').trigger('product:beforeAddToCart', this);
+
+            pid = $(this).data('pid');
+            addToCartUrl = $(this).data('href');
+            pidsQty = 1;
+
+            var form = {
+                pid: pid,
+                quantity: pidsQty
+            };
+
+            if ($(this).data('option')) {
+                form.options = JSON.stringify($(this).data('option'));
+            }
+
+            if (addToCartUrl) {
+                $.ajax({
+                    url: addToCartUrl,
+                    method: 'POST',
+                    data: form,
+                    success: function (data) {
+                        $('#successModal').modal('show');
+                        $.spinner().stop();
+                    },
+                    error: function () {
+                        $.spinner().stop();
+                    }
+                });
+            }
         });
     }
 };

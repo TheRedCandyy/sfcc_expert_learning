@@ -9,6 +9,17 @@
     <div class="container">
         <h1>WISHLIST</h1>
         <br>
+        <!-- Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="wishlist-modal modal-content">
+                <div class="modal-body">
+                    Item added to the cart!
+                    <button type="button" class="btn btn-success float-right" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                </div>
+                </div>
+            </div>
+        </div>
         <isif condition="${pdict.wishlist.items.length > 0}">
             <isloop items="${pdict.wishlist.items}" var="item" status="loopstatus">
                 <div class="card flex-row border-0">
@@ -17,22 +28,8 @@
                         <h5 class="card-title">${item.name}</h5>
                         <p class="card-text">${item.priceObj.sales.formatted}</p>
                     </div>
-                    <button
-                        class="btn btn-primary remove-from-wishlist wishlist-page"
-                        data-pid="${item.pid}"
-                        data-option="${JSON.stringify(item.selectedOptions)}"
-                        data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
-                        style="height:40px; margin-right:10px">
-                        <i class="fa fa-shopping-cart"></i>
-                    </button>
-                    <button
-                        class="btn btn-primary remove-from-wishlist wishlist-page"
-                        data-pid="${item.pid}"
-                        data-option="${JSON.stringify(item.selectedOptions)}"
-                        data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
-                        style="height:40px">
-                        <i class="fa fa-times"></i>
-                    </button>
+                    <isinclude template="wishlist/components/addToCart"/>
+                    <isinclude template="wishlist/components/removeFromWishlist"/>
                 </div>
                 <isif condition="${!loopstatus.last}">
                     <hr>

@@ -9,7 +9,7 @@
  var productListHelper = require('*/cartridge/scripts/productList/productListHelpers');
  var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
  var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
- 
+
  var Resource = require('dw/web/Resource');
  var URLUtils = require('dw/web/URLUtils');
  var ProductList = require('dw/customer/ProductList');

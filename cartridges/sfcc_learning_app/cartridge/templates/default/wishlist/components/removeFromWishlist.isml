@@ -1,0 +1,8 @@
+<button
+    class="btn btn-primary remove-from-wishlist wishlist-page"
+    data-pid="${item.pid}"
+    data-option="${JSON.stringify(item.selectedOptions)}"
+    data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
+    style="height:40px">
+    <i class="fa fa-times"></i>
+</button>

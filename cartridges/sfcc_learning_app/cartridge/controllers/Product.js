@@ -11,6 +11,19 @@ var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var pageMetaData = require('*/cartridge/scripts/middleware/pageMetaData');
 var productListHelper = require('*/cartridge/scripts/productList/productListHelpers');
 
+function getPidValueWishlist($el) {
+    var pid;
+
+    if ($('#quickViewModal').hasClass('show') && !$('.product-set').length) {
+        pid = $($el).closest('.modal-content').find('.product-quickview').data('pid');
+    } else if ($('.product-set-detail').length || $('.product-set').length) {
+        pid = $($el).closest('.product-detail').find('.product-id').text();
+    } else {
+        pid = $('.product-detail:not(".bundle-item")').data('pid');
+    }
+    return pid;
+}
+
 server.extend(module.superModule);
 server.prepend('Show',
     cache.applyPromotionSensitiveCache,

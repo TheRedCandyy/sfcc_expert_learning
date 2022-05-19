@@ -1,0 +1,9 @@
+<button
+    class="btn btn-primary add-to-cart wishlist-page"
+    data-pid="${item.pid}"
+    data-option="${JSON.stringify(item.selectedOptions)}"
+    data-href="${URLUtils.url('Cart-AddProduct');}"
+    data-options="${item.selectedOptions}"
+    style="height:40px; margin-right:10px">
+    <i class="fa fa-shopping-cart"></i>
+</button>
