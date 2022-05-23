@@ -37,6 +37,39 @@ server.get('Show', consentTracking.consent, userLoggedIn.validateLoggedIn, serve
     }
 );
 
+server.post('GetWishlist', function (req, res, next) {
+        // Type 10 means it is a wishlist productList
+        var list = productListHelper.getCurrentOrNewList(req.currentCustomer.raw, { type: 10 });
+        var pid = req.form.pid;
+        var optionId = req.form.optionId || null;
+        var optionVal = req.form.optionVal || null;
+
+        var config = {
+            qty: 1,
+            optionId: optionId,
+            optionValue: optionVal,
+            req: req,
+            type: 10
+        };
+
+        var success = productListHelper.itemExists(list, pid, config);
+
+        if (success) {
+            res.json({
+                success: true,
+                pid: pid
+            });
+        } else {
+            res.json({
+                error: true,
+                pid: pid
+            });
+        }
+
+        next();
+    }
+);
+
 server.post('AddProduct', function (req, res, next) {
     var list = productListHelper.getCurrentOrNewList(req.currentCustomer.raw, { type: 10 }); // Type 10 means it is a wishlist productList
     var pid = req.form.pid;

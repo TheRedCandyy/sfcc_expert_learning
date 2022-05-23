@@ -27,6 +27,9 @@
                     <div class="card-body">
                         <h5 class="card-title">${item.name}</h5>
                         <p class="card-text">${item.priceObj.sales.formatted}</p>
+                        <isloop items="${item.variationAttributes}" var="attribute">
+                            <p class="line-item-attributes ${attribute.displayName}-${lineItem.UUID}">${attribute.displayName}: ${attribute.displayValue}</p>
+                        </isloop>
                     </div>
                     <isinclude template="wishlist/components/addToCart"/>
                     <isinclude template="wishlist/components/removeFromWishlist"/>
