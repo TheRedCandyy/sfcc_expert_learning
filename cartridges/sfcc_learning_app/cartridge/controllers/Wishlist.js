@@ -38,6 +38,14 @@ server.get('Show', consentTracking.consent, userLoggedIn.validateLoggedIn, serve
 );
 
 server.post('GetWishlist', function (req, res, next) {
+        if (!req.currentCustomer.profile) {
+            res.json({
+                error: true,
+                message: 'No loggin',
+                pid: pid
+            });
+        }
+
         // Type 10 means it is a wishlist productList
         var list = productListHelper.getCurrentOrNewList(req.currentCustomer.raw, { type: 10 });
         var pid = req.form.pid;

@@ -46,12 +46,22 @@ function displayMessage(data, button) {
 }
 
 function displayButton(data){
-    if (data.success) {
-        $('.remove-from-wishlist[data-pid='+ data.pid +']').show();
-        $('.add-to-wishlist[data-pid='+ data.pid +']').hide();
+    //If user is not logged in disables the button
+    if (data.message) {
+        $('.add-to-wishlist[data-pid='+ data.pid +']').prop('disabled', true);
+        $('.remove-from-wishlist[data-pid='+ data.pid +']').prop('disabled', true);
+        $('.not-logged').addClass('d-block');
+        $('.not-logged').removeClass('d-none');
     }else {
-        $('.remove-from-wishlist[data-pid='+ data.pid +']').hide();
-        $('.add-to-wishlist[data-pid='+ data.pid +']').show();
+        $('.not-logged').addClass('d-none');
+        $('.not-logged').removeClass('d-block');
+        if (data.success) {
+            $('.remove-from-wishlist[data-pid='+ data.pid +']').show();
+            $('.add-to-wishlist[data-pid='+ data.pid +']').hide();
+        }else {
+            $('.remove-from-wishlist[data-pid='+ data.pid +']').hide();
+            $('.add-to-wishlist[data-pid='+ data.pid +']').show();
+        }
     }
 }
 
