@@ -28,6 +28,7 @@
                 ${Resource.msg('button.addtowishlist', 'product', null)}
             </button>
             <p class="not-logged ${!pdict.loggedIn ? 'd-block' : 'd-none'}">${Resource.msg('wishlist.notLoggedIn', 'wishlist', null)}</p>
+            <p class="wishlist-text"></p>
         <iscomment>
             <iselse/>
                 <p class="wishlist-text">${Resource.msg('wishlist.notAvailableToAddToWishlist', 'wishlist', null)}</p>
