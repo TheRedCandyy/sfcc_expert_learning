@@ -26,3 +26,10 @@
     - [x] Items that are added to the cart from the wishlist have their quantity updated appropriately
 ##### As a non-logged in customer
 - [x] Displays the wishlist action disabled and a message that says the user needs to be logged in to do this.
+
+---
+### Products
+
+- [x] Create a custom attribute to the product object that checks if a product can be added to the wishlist.
+
+- [x] Add functionality that checks if this product can or cannot be added to the wishlist, display an appropriate message if false.
