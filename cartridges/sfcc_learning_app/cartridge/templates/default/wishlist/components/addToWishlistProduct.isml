@@ -1,11 +1,6 @@
 <div class="row cart-and-ipay">
     <div class="col-sm-12">
-        <iscomment>
-            <p>${JSON.stringify(product)}</p>
-        </iscomment>
-        <iscomment>
-            <isif condition="${product.availableForAddToWishlist}">
-        </iscomment>
+        <isif condition="${product.availableForAddToWishlist}">
             <button
                 class="btn btn-primary remove-from-wishlist"
                 data-pid="${product.id}"
@@ -29,10 +24,8 @@
             </button>
             <p class="not-logged ${!pdict.loggedIn ? 'd-block' : 'd-none'}">${Resource.msg('wishlist.notLoggedIn', 'wishlist', null)}</p>
             <p class="wishlist-text"></p>
-        <iscomment>
-            <iselse/>
-                <p class="wishlist-text">${Resource.msg('wishlist.notAvailableToAddToWishlist', 'wishlist', null)}</p>
-            </isif>
-        </iscomment>
+        <iselse/>
+            <p class="add-to-wishlist-text">${Resource.msg('wishlist.notAvailableToAddToWishlist', 'wishlist', null)}</p>
+        </isif>
     </div>
 </div>
