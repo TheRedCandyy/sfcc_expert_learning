@@ -1,0 +1,47 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets');
+        assets.addJs('/js/productDetail.js');
+        assets.addJs('/js/wishlist.js');
+        assets.addCss('/css/product/detail.css');
+        assets.addCss('/css/wishlist.css');
+    </isscript>
+    <div class="container">
+        <h1>WISHLIST</h1>
+        <br>
+        <!-- Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="wishlist-modal modal-content">
+                <div class="modal-body">
+                    Item added to the cart!
+                    <button type="button" class="btn btn-success float-right" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <isif condition="${pdict.wishlist.items.length > 0}">
+            <isloop items="${pdict.wishlist.items}" var="item" status="loopstatus">
+                <div class="card flex-row border-0">
+                    <a href="${URLUtils.url('Product-Show', 'pid', item.pid).relative().toString()}"><img src="${item.imageObj.small[0].absURL}" class="card-img-top w-auto rounded wishlist-image" alt="Image of product"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">${item.name}</h5>
+                        <p class="card-text">${item.priceObj.sales.formatted}</p>
+                        <isloop items="${item.variationAttributes}" var="attribute">
+                            <p class="line-item-attributes ${attribute.displayName}-${lineItem.UUID}">${attribute.displayName}: ${attribute.displayValue}</p>
+                        </isloop>
+                    </div>
+                    <isinclude template="wishlist/components/addToCart"/>
+                    <isinclude template="wishlist/components/removeFromWishlist"/>
+                </div>
+                <isif condition="${!loopstatus.last}">
+                    <hr>
+                <iselse>
+                    <br>
+                </isif>
+            </isloop>
+        <iselse/>
+            <h2>${Resource.msg('wishlist.emptywishlist', 'wishlist', null)}</h2>
+        </isif>
+    </div>
+</isdecorate>

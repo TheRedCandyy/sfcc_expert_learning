@@ -1,0 +1,38 @@
+<div class="row cart-and-ipay">
+    <div class="col-sm-12">
+        <iscomment>
+            <p>${JSON.stringify(product)}</p>
+        </iscomment>
+        <iscomment>
+            <isif condition="${product.availableForAddToWishlist}">
+        </iscomment>
+            <button
+                class="btn btn-primary remove-from-wishlist"
+                data-pid="${product.id}"
+                data-href="${URLUtils.url('Wishlist-RemoveProduct')}"
+                data-option="${JSON.stringify(item.selectedOptions)}"
+                ${!pdict.loggedIn ? "disabled" : ""}
+                ${!pdict.inWishlist ? "style='display:none'" : ""}>
+                <i class="fa fa-heart"></i>
+                ${Resource.msg('button.removefromwishlist', 'product', null)}
+            </button>
+            <button
+                class="btn btn-primary add-to-wishlist"
+                data-pid="${product.id}"
+                data-href="${URLUtils.url('Wishlist-AddProduct')}"
+                data-option="${JSON.stringify(item.selectedOptions)}"
+                ${!product.readyToOrder || !product.available ? "disabled" : ""}
+                ${!pdict.loggedIn ? "disabled" : ""}
+                ${pdict.inWishlist ? "style='display:none'" : ""}>
+                <i class="fa fa-heart"></i>
+                ${Resource.msg('button.addtowishlist', 'product', null)}
+            </button>
+            <p class="not-logged ${!pdict.loggedIn ? 'd-block' : 'd-none'}">${Resource.msg('wishlist.notLoggedIn', 'wishlist', null)}</p>
+            <p class="wishlist-text"></p>
+        <iscomment>
+            <iselse/>
+                <p class="wishlist-text">${Resource.msg('wishlist.notAvailableToAddToWishlist', 'wishlist', null)}</p>
+            </isif>
+        </iscomment>
+    </div>
+</div>

@@ -7,5 +7,5 @@ require('bootstrap/js/src/collapse.js');
 require('bootstrap/js/src/modal.js');
 require('bootstrap/js/src/scrollspy.js');
 require('bootstrap/js/src/tab.js');
-// require('bootstrap/js/src/tooltip.js');
-// require('bootstrap/js/src/popover.js');
+require('bootstrap/js/src/tooltip.js');
+require('bootstrap/js/src/popover.js');
