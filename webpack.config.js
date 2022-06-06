@@ -7,7 +7,7 @@ var path = require('path');
         name: 'js',
         entry: sgmfScripts.createJsPath(),
         output: {
-            path: path.resolve('./cartridges/sfcc_learning_app/cartridge/static'),
+            path: path.resolve('./cartridges/custom_sfcc_learning/cartridge/static'),
             filename: '[name].js'
         }
     }, {
@@ -15,7 +15,7 @@ var path = require('path');
         name: 'scss',
         entry: sgmfScripts.createScssPath(),
         output: {
-            path: path.resolve('./cartridges/sfcc_learning_app/cartridge/static'),
+            path: path.resolve('./cartridges/custom_sfcc_learning/cartridge/static'),
             filename: '[name].css'
         },
         module: {
