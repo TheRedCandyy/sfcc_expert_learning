@@ -35,3 +35,8 @@ The cartridge where I am doing these implementations is called `sfcc_learning_pa
 - [x] Create a custom attribute to the product object that checks if a product can be added to the wishlist.
 
 - [x] Add functionality that checks if this product can or cannot be added to the wishlist, display an appropriate message if false.
+
+---
+### Order Process
+
+- [x] When a customer completes an order that includes products that are on the customer wishlist, there products are to be removed.
