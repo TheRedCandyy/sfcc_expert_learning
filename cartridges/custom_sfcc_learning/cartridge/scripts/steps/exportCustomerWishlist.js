@@ -8,22 +8,15 @@ var FileReader = require('dw/io/FileReader');
 
 module.exports = {
     exportWishlist: function exportWishlist() {
-        // Read customer list
-        // Do my logic
-        // Delete old customer list file
-        // Write new file with the data needed
-
         var file = new File(File.IMPEX + '/src/CustomerList.xml');
-
         var fileReader = new FileReader(file);
-
         var xmlFile = fileReader.readLines().toArray();
+        var customerNumberList = [];
 
-        var customerIdList = [];
-
+        //Gets the costumerIds from the customer export file
         xmlFile.forEach(function (xmlLine) {
             if (xmlLine.includes('customer-no')) {
-                customerIdList.push(xmlLine.substring(xmlLine.indexOf('"') + 1, xmlLine.length - 2).toString());
+                customerNumberList.push(xmlLine.substring(xmlLine.indexOf('"') + 1, xmlLine.length - 2).toString());
             }
         });
 
@@ -33,7 +26,8 @@ module.exports = {
         fileWriter.setLineSeparator('\r\n');
         fileWriter.writeLine('customer uid,product id,customer name,email address,date product');
 
-        customerIdList.forEach(function (customerId) {
+        customerNumberList.forEach(function (customerId) {
+            //Gets the customer by his number and gets his wishlist
             var customer = CustomerMgr.getCustomerByCustomerNumber(customerId.toString());
             var config = { type: 10 };
             var wishlist = productListHelper.getCurrentOrNewList(customer, config);
@@ -42,6 +36,7 @@ module.exports = {
             if (items.length > 0) {
                 items.forEach(function (item) {
                     if (Date.parse(item.creationDate) < (Date.now() - 86400000)) {
+                        //Writes the data into the file if the user has items on the wishlist and the items are older than a day
                         fileWriter.writeLine(customerId.toString() + ',' + item.ID + ',' + customer.profile.firstName + ' ' + customer.profile.lastName + ',' + customer.profile.email + ',' + item.creationDate);
                     }
                 });
