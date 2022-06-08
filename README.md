@@ -40,3 +40,8 @@ The cartridge where I am doing these implementations is called `sfcc_learning_pa
 ### Order Process
 
 - [x] When a customer completes an order that includes products that are on the customer wishlist, there products are to be removed.
+
+---
+### Job
+
+- [x] Create a job that saves in a csv all the products from the customers wishlist that have been in there for more than a day.
