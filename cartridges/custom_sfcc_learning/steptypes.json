@@ -1,0 +1,40 @@
+{
+    "step-types":
+    {
+        "script-module-step":
+        [
+            {
+                "@type-id":"custom.ExportCustomerWishlist",
+                "@supports-parallel-execution":"false",
+                "@supports-site-context":"true",
+                "@supports-organization-context":"false",
+                "description":"This scripts exports all the product and customer data if the customer has products on wishlist from more than a day",
+                "module":"custom_sfcc_learning/cartridge/scripts/steps/exportCustomerWishlist.js",
+                "function":"exportWishlist",
+                "transactional":"false",
+                "timeout-in-seconds":"900",
+                "parameters":
+                {
+                },
+                "status-codes":
+                {
+                    "status":
+                    [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when the step failed with an error."
+                        },
+                        {
+                            "@code": "FINISHED",
+                            "description": "Used when the step finished successfully."
+                        },
+                        {
+                            "@code": "FINISHED_WITH_WARNINGS",
+                            "description": "Used when the step finished with warnings."
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
